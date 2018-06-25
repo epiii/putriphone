@@ -10,6 +10,8 @@
         $hp = trim($nohp);
       } elseif(substr(trim($nohp), 0, 1)=='0'){ // 08xxxx
         $hp = '+62'.substr(trim($nohp), 1);
+      } else {
+        $hp = 0;
       }
     } return $hp;
   }

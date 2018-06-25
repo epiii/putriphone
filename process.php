@@ -20,15 +20,16 @@ if(!isset($_POST)){
       $arr[]=[
         'id'=>$r['id'],
         'username'=>$r['username'],
-        'no_wa'=>convert_id($r['no_wa']),
+        'no_wa_old'=>$r['no_wa'],
+        'no_wa_new'=>convert_id($r['no_wa'])=='0'?'not Indonesia':convert_id($r['no_wa']),
       ];
     }
     $out=json_encode([
       'status'=>'phonelist',
       'data'=>$arr
     ]);
-    // $out=json_encode(['status'=>(!$e?false:true)]);
-  	// $out=json_encode(['status'=>'update']);
+  } elseif ($_POST['mode']=='phoneupdate'){
+    // $s = 'UPDATE '
   }
 }
 echo $out;
