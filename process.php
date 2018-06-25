@@ -15,7 +15,19 @@ if(!isset($_POST)){
     // $s = 'SELECT * FROM pengguna WHERE no_wa NOT LIKE "08%" ';
     $s = 'SELECT * FROM pengguna WHERE no_wa order by no_wa DESC ';
   	$e = mysqli_query($conn,$s);
-    $out=json_encode(['status'=>(!$e?false:true)]);
+    $arr=[];
+    while ($r=mysqli_fetch_assoc($e)) {
+      $arr[]=[
+        'id'=>$r['id'],
+        'username'=>$r['username'],
+        'no_wa'=>convert_id($r['no_wa']),
+      ];
+    }
+    $out=json_encode([
+      'status'=>'phonelist',
+      'data'=>$arr
+    ]);
+    // $out=json_encode(['status'=>(!$e?false:true)]);
   	// $out=json_encode(['status'=>'update']);
   }
 }

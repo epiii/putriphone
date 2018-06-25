@@ -12,6 +12,13 @@
     <label for="">No HP</label>
     <input type="hidden" name="mode" value="phonecheck">
     <input type="tel" name="no_wa" value="">
+    <input type="submit" name="" value="convert">
+  </form>
+  <hr>
+
+  <form class="" action="process.php" method="post">
+    <input type="hidden" name="mode" value="phonelist">
+    <input type="submit" name="" value="convert all">
   </form>
 
   <?php
