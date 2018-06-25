@@ -10,7 +10,7 @@
 
   <form class="" action="process.php" method="post">
     <label for="">No HP</label>
-    <input type="hidden" name="mode" value="checkphone">
+    <input type="hidden" name="mode" value="phonecheck">
     <input type="tel" name="no_wa" value="">
   </form>
 
