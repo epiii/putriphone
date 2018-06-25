@@ -1,0 +1,14 @@
+{
+    "name": "westalah/putriphone",
+    "description": "\"putriphone formatter 1.0\"",
+    "authors": [
+        {
+            "name": "epiii",
+            "email": "gue.elfrianto@gmail.com"
+        }
+    ],
+    "require": {
+        "giggsey/libphonenumber-for-php": "^8.9",
+        "twilio/sdk": "4.*"
+    }
+}
