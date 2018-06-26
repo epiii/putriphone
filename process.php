@@ -15,21 +15,21 @@ if(!isset($_POST)){ // error
       'country'=>$phone['country'],
     ];
   } elseif ($_POST['mode']=='phonelist'){ // check semua
-    $s = 'SELECT * FROM pengguna order by no_wa DESC ';
-  	$e = mysqli_query($conn,$s);
-    $arr=[];
-    while ($r=mysqli_fetch_assoc($e)) {
-      $arr[]=[
-        'id'=>$r['id'],
-        'username'=>$r['username'],
-        'no_wa_old'=>$r['no_wa'],
-        'no_wa_new'=>phone_format($r['no_wa'])=='0'?'not Indonesia':phone_format($r['no_wa']),
-      ];
-    }
-    $out=[
-      'status'=>'phonelist',
-      'data'=>$arr
-    ];
+   //  $s = 'SELECT * FROM pengguna order by no_wa DESC ';
+  	// $e = mysqli_query($conn,$s);
+   //  $arr=[];
+   //  while ($r=mysqli_fetch_assoc($e)) {
+   //    $arr[]=[
+   //      'id'=>$r['id'],
+   //      'username'=>$r['username'],
+   //      'no_wa_old'=>$r['no_wa'],
+   //      'no_wa_new'=>phone_format($r['no_wa'])=='0'?'not Indonesia':phone_format($r['no_wa']),
+   //    ];
+   //  }
+   //  $out=[
+   //    'status'=>'phonelist',
+   //    'data'=>$arr
+   //  ];
   } elseif ($_POST['mode']=='phonesave'){ // create / update
     // sql here ......
     $out=[
