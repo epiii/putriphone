@@ -26,6 +26,7 @@
       $no = str_replace(")","",$no);
       $no = str_replace(".","",$no);
 
+      // $no = 085655009393
       $_1_dst = substr(trim($no), 1); // 856....
       $_1_1 = substr(trim($no), 1, 1); // 8
 
@@ -35,7 +36,7 @@
         $res['country']='unknown';
       // var_dump($res);
 
-      if($_1_1=='8'){ // indonesia 08xxx -> +62xxx
+      if($_1_1=='8'){ // indonesia : 08xxx -> +62xxx
         $res=[
           'number'=>'+62'.$_1_dst,
           'country'=>'Indonesia'

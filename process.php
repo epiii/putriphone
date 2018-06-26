@@ -4,7 +4,7 @@ require 'lib.php';
 
 $out=[];
 if(!isset($_POST)){ // error
-  $out[]=['status'=>'invalid_request'];
+  $out=['status'=>'invalid_request'];
 } else { // tidak error
   if($_POST['mode']=='phonecheck'){ // check nomor
     $phone = phone_format($_POST['number']);
