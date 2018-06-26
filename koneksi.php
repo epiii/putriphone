@@ -1,14 +1,13 @@
 <?php
-$host ="localhost:3306";
+$host ="localhost";
+// $host ="localhost:3306";
 $pass ="9kali9=81ub";
 $user ="root";
 $dbname ="sf_db019";
 
 $conn = mysqli_connect($host, $user, $pass, $dbname);
-/*
-if ($conn->connect_error) {
-  echo $conn->connect_error;
-} else {
-  echo "konek loh";
-}
-*/
+// if ($conn->connect_error) {
+//   echo $conn->connect_error;
+// } else {
+//   echo "konek loh";
+// }

@@ -1,18 +1,21 @@
 <?php
-require_once 'koneksi.php';
-require_once 'lib.php';
+require 'koneksi.php';
+require 'lib.php';
 
+// var_dump($_POST['mode']);
+// exit();
+$out=[];
 if(!isset($_POST)){
-  $out=json_encode(array('status'=>'invalid_request'));
+  $out[]=['status'=>'invalid_request'];
+  // $out=json_encode(array('status'=>'invalid_request'));
 } else {
   if($_POST['mode']=='phonecheck'){
-    $no_wa = convert_id($_POST['no_wa']);
-    $out=json_encode(array(
+    $no_wa = phone_format($_POST['no_wa']);
+    $out=[
       'status'=>'checkphone',
       'data'=>$no_wa
-    ));
+    ];
   } elseif ($_POST['mode']=='phonelist'){
-    // $s = 'SELECT * FROM pengguna WHERE no_wa NOT LIKE "08%" ';
     $s = 'SELECT * FROM pengguna order by no_wa DESC ';
   	$e = mysqli_query($conn,$s);
     $arr=[];
@@ -21,16 +24,17 @@ if(!isset($_POST)){
         'id'=>$r['id'],
         'username'=>$r['username'],
         'no_wa_old'=>$r['no_wa'],
-        'no_wa_new'=>convert_id($r['no_wa'])=='0'?'not Indonesia':convert_id($r['no_wa']),
+        'no_wa_new'=>phone_format($r['no_wa'])=='0'?'not Indonesia':phone_format($r['no_wa']),
       ];
     }
-    $out=json_encode([
+    $out=[
       'status'=>'phonelist',
       'data'=>$arr
-    ]);
-  } elseif ($_POST['mode']=='phoneupdate'){
-    // $s = 'UPDATE '
+    ];
   }
+  // elseif ($_POST['mode']=='phoneupdate'){
+  //   // $s = 'UPDATE '
+  // }
 }
-echo $out;
+echo json_encode($out);
 ?>
