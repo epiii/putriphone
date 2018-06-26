@@ -2,20 +2,19 @@
 require 'koneksi.php';
 require 'lib.php';
 
-// var_dump($_POST['mode']);
-// exit();
 $out=[];
-if(!isset($_POST)){
+if(!isset($_POST)){ // error
   $out[]=['status'=>'invalid_request'];
-  // $out=json_encode(array('status'=>'invalid_request'));
-} else {
-  if($_POST['mode']=='phonecheck'){
-    $no_wa = phone_format($_POST['no_wa']);
+} else { // tidak error
+  if($_POST['mode']=='phonecheck'){ // check nomor
+    $phone = phone_format($_POST['number']);
+    // var_dump($phone);exit();
     $out=[
       'status'=>'checkphone',
-      'data'=>$no_wa
+      'number'=>$phone['number'],
+      'country'=>$phone['country'],
     ];
-  } elseif ($_POST['mode']=='phonelist'){
+  } elseif ($_POST['mode']=='phonelist'){ // check semua
     $s = 'SELECT * FROM pengguna order by no_wa DESC ';
   	$e = mysqli_query($conn,$s);
     $arr=[];
@@ -31,10 +30,12 @@ if(!isset($_POST)){
       'status'=>'phonelist',
       'data'=>$arr
     ];
+  } elseif ($_POST['mode']=='phonesave'){ // create / update
+    // sql here ......
+    $out=[
+      'status'=>true,
+    ];
   }
-  // elseif ($_POST['mode']=='phoneupdate'){
-  //   // $s = 'UPDATE '
-  // }
 }
 echo json_encode($out);
 ?>
